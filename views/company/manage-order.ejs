@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Branch - Food Order</title>
+</head>
+<body>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <%- include("nav-sidebar.ejs", { data: { companies: formattedCompanies } }) %>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="nav-link nav-link-lg collapse-btn">
+                <% if(branches.length > 0){ %>
+                    <select class="form-control border-light" id="branchSelected">
+                        <% for (let i = 0; i < branches.length; i++) { %>
+                            <option value="<%= branches[i]._id %>"
+                                    data-branch-id="<%= branches[i]._id %>"><%= branches[i].branch_name %></option>
+                        <% } %>
+                    </select>
+                <% } else { %>
+                    <h1>Add branch</h1>
+                <% } %>
+            </div>
+            <div id="orderData" class="table-responsive">
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // Function to fetch order data
+        function fetchOrderData(branchId) {
+            $.ajax({
+                url: `/company/branch-fetch-order/${branchId}`,
+                type: 'GET',
+                success: function (data) {
+                    // Clear previous data
+                    $('#orderData').empty();
+
+                    // Populate order data table
+                    if (data.length > 0) {
+                        $('#orderData').append(`<table class="table table-striped table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>Bill No</th>
+                                    <th>Table Name</th>
+                                    <th>Total Price</th>
+                                    <th>Payment Mode</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>`);
+
+                        data.forEach(function (order) {
+                            $('#orderData table tbody').append(`<tr>
+                                <td>${order.bill_no}</td>
+                                <td>${order.table_id.table_name}</td>
+                                <td>${order.total_price}</td>
+                                <td> ${['Veg', 'Egg', 'Non Veg'][order.payment_mode - 1]}</td>
+                                <td>${order.created_at}</td>
+                            </tr>`);
+                        });
+                    } else {
+                        $('#orderData').append('<p>No orders found.</p>');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching order data:', error);
+                    $('#orderData').html('<p>Error fetching order data.</p>');
+                }
+            });
+        }
+
+        // Default call to fetch order data
+        const defaultBranchId = $('#branchSelected').val();
+        fetchOrderData(defaultBranchId);
+
+        // Change event listener for branch selection
+        $('#branchSelected').change(function () {
+            const branchId = $(this).val();
+            fetchOrderData(branchId);
+        });
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- General JS Scripts -->
+<script src="assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="assets/bundles/datatables/datatables.min.js"></script>
+<script src="assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+<script src="assets/bundles/chocolat/dist/js/jquery.chocolat.min.js"></script>
+<script src="assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+<!-- Page Specific JS File -->
+<script src="assets/js/page/datatables.js"></script>
+<!-- Template JS File -->
+<script src="assets/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="assets/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Digirestro - Admin</title>
+</head>
+
+<body>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <%- include("nav-sidebar.ejs") %>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- write a code -->
+
+            <section class="section">
+                <div class="section-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h4>Branches</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover" id="table-1" style="width:100%;">
+                                            <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <!--                                                <th>Company Name</th>-->
+                                                <th>Branch Name</th>
+                                                <th>Address</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Country</th>
+                                                <th>Pincode</th>
+                                                <th>Gst No</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <!--                                                <td>Zometo</td>-->
+                                                <td>surat</td>
+                                                <td>mota varachha</td>
+                                                <td>Surat</td>
+                                                <td>Gujrat</td>
+                                                <td>India</td>
+                                                <td>328443</td>
+                                                <td>22AAAAA0000A1Z5</td>
+                                                <td>
+                                                    <div class="badge badge-success badge-shadow">Active</div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+</div>
+<script src="../admin/assets/js/page/datatables.js"></script>
+</body>
+</html>

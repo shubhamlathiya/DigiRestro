@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Digirestro - Admin</title>
+</head>
+
+<body>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <%- include("nav-sidebar.ejs") %>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- write a code -->
+
+            <section class="section">
+                <div class="section-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h4>Inquiry</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="table-1">
+                                            <thead>
+                                            <tr>
+                                                <th>Index</th>
+                                                <th>Name</th>
+                                                <th>Email Id</th>
+                                                <th>Mobile No</th>
+                                                <th>Subject</th>
+                                                <th>Message</th>
+                                                <th>Created At</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% for(let i = 0; i < viewInqData.length; i++){ %>
+                                                <tr>
+                                                    <td><%= i + 1 %></td>
+                                                    <!-- <td><%= viewInqData[i]._id %></td> -->
+                                                    <td><%= viewInqData[i].name %></td>
+                                                    <td><%= viewInqData[i].email_id %></td>
+                                                    <td><%= viewInqData[i].mobile_no %></td>
+                                                    <td><%= viewInqData[i].subject %></td>
+                                                    <td><%= viewInqData[i].message %></td>
+                                                    <td>
+                                                        <%=
+                                                            viewInqData[i].created_at.toLocaleString('en-US', {
+                                                                weekday: 'short',
+                                                                day: 'numeric',
+                                                                month: 'short',
+                                                                year: 'numeric'
+                                                            })
+                                                        %>
+                                                        <br>
+                                                        <%=
+                                                            viewInqData[i].created_at.toLocaleString('en-US', {
+                                                                hour: '2-digit',
+                                                                minute: '2-digit',
+                                                                second: '2-digit',
+                                                                timeZoneName: 'short'
+                                                            })
+                                                        %>
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="/admin/compose-email?to=<%= viewInqData[i].email_id %>" class="btn btn-primary"
+                                                        ><i class="fas fa-mail-bulk"></i
+                                                            ></a>
+                                                    </td>
+                                                </tr>
+                                            <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="../admin/assets/js/page/datatables.js"></script>
+</body>
+</html>

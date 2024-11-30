@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Digirestro - Company</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-geocoder/v0.1.0/leaflet-geocoder.js"></script>
+
+</head>
+
+<body>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+
+        <%- include("nav-sidebar.ejs", { data: { companies: formattedCompanies } }) %>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="row ">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <h5 class="font-15">Today Revenue</h5>
+                                                <h2 class="mb-3 font-18" id="today"></h2>
+                                                <p class="mb-0"><span class="col-green">10%</span> Increase</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img src="assets/img/banner/1.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <h5 class="font-15">Current Week Revenue</h5>
+                                                <h2 class="mb-3 font-18" id="currentWeek"></h2>
+                                                <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img src="assets/img/banner/2.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <h5 class="font-15">Current Month Revenue</h5>
+                                                <h2 class="mb-3 font-18" id="currentMonth"></h2>
+                                                <p class="mb-0"><span class="col-green">18%</span>
+                                                    Increase</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img src="assets/img/banner/3.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <h5 class="font-15">Current Year Revenue</h5>
+                                                <h2 class="mb-3 font-18" id="currentYear"></h2>
+                                                <p class="mb-0"><span class="col-green">42%</span> Increase</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img src="assets/img/banner/4.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Revenue Branch</h4>
+                            </div>
+                            <div class="card-body">
+                                <!--                                views/company/assets/js/page/index.js -->
+                                <div id="chart4" class="chartsh"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Payment Method</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="summary">
+                                    <div class="summary-chart active" data-tab-group="summary-tab" id="summary-chart">
+                                        <!--                                views/company/assets/js/page/index.js -->
+                                        <div id="chart3" class="chartsh"></div>
+                                    </div>
+                                    <div data-tab-group="summary-tab" id="summary-text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                    <div class="col-12 col-sm-12 col-lg-4">-->
+                    <!--                        <div class="card">-->
+                    <!--                            <div class="card-header">-->
+                    <!--                                <h4>Chart 2</h4>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="card-body">-->
+                    <!--                                <div id="chart2" class="chartsh"></div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+                <div id="map" style="width: 100%; height: 400px;"></div>
+                <!--                <div id="map">-->
+                <!--                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"-->
+                <!--                            src="https://www.openstreetmap.org/export/embed.html?bbox=3.2553%2C45.9383%2C3.2553%2C45.9383&marker=45.9383%2C3.2553&layers=N">-->
+                <!--                    </iframe>-->
+                <!--                </div>-->
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="footer-left">
+                <a href="../Home/index.html">Digirestro</a>
+            </div>
+            <div class="footer-right">
+            </div>
+        </footer>
+    </div>
+</div>
+<!-- General JS Scripts -->
+<script src="assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
+<!-- Page Specific JS File -->
+<script src="assets/js/page/index.js"></script>
+<!-- Template JS File -->
+<script src="assets/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="assets/js/custom.js"></script>
+<script>
+    var map = L.map('map');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var markers = []; // Array to store markers
+
+    // Function to geocode using OpenStreetMap Nominatim
+    function geocodeAddress(address, callback) {
+        var url = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address);
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    var result = data[0];
+                    callback({
+                        lat: parseFloat(result.lat),
+                        lng: parseFloat(result.lon)
+                    });
+                } else {
+                    callback(null);
+                }
+            })
+            .catch(error => {
+                console.error('Error geocoding address:', error);
+                callback(null);
+            });
+    }
+
+    <% map.forEach(function(branch) { %>
+    geocodeAddress('<%= branch.city + ', ' + branch.state + ', ' + branch.country %>', function (coordinates) {
+        if (coordinates) {
+            var marker = L.marker([coordinates.lat, coordinates.lng]).addTo(map);
+            marker.bindPopup('<%= branch.branch_name %>' + '<br/>' + '<%= branch.city + ', ' + branch.state + ', ' + branch.country %>').openPopup();
+            markers.push(marker);
+            if (markers.length === <%= map.length %>) {
+                var group = new L.featureGroup(markers);
+                map.fitBounds(group.getBounds());
+            }
+        } else {
+            console.error('Could not geocode address:', '<%= branch.city %>');
+        }
+    });
+    <% }); %>
+</script>
+
+</body>
+</html>
