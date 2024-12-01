@@ -167,20 +167,4 @@ Refer to the documentation for a detailed API list.
 
 ---
 
-## Contributors
-
-- **Shubham Lathiya** (202103100110013)
-- **Priyank Mangaroliya** (202103100110036)
-- **Pruthil Italiya** (202103100110102)
-
-**Guided By**: Ms. Poonam Godhwani
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 For a detailed breakdown of each section, please refer to the full documentation included in the project files.
